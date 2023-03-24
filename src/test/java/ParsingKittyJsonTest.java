@@ -4,6 +4,9 @@ import org.junit.jupiter.api.Test;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.List;
+
+import KittyJson.*
 
 public class ParsingKittyJsonTest {
     private ClassLoader cl = ParsingKittyJsonTest.class.getClassLoader();
@@ -19,7 +22,7 @@ public class ParsingKittyJsonTest {
             Assertions.assertEquals("Cornish Rex", kitty.getBreed());
             Assertions.assertEquals("Grey", kitty.getColor());
             Assertions.assertEquals(4, kitty.getAge());
-            Assertions.assertEquals("Natasha and Alexey", kitty.getOwnersName());
+            Assertions.assertEquals(List.of("Natasha", "Alexey"), kitty.getOwnersNames());
         }
     }
 }

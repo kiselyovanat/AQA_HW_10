@@ -1,9 +1,13 @@
+package KittyJson;
+
+import java.util.List;
+
 public class Kitty {
     private String name;
     private String breed;
     private String color;
     private Integer age;
-    private String ownersName;
+    private List<String> ownersNames;
 
     public String getName() {
         return name;
@@ -37,11 +41,11 @@ public class Kitty {
         this.age = age;
     }
 
-    public String getOwnersName() {
-        return ownersName;
+    public List<String> getOwnersNames() {
+        return ownersNames;
     }
 
-    public void setOwnersName(String ownersName) {
-        this.ownersName = ownersName;
+    public void setOwnersNames(List<String> ownersNames) {
+        this.ownersNames = ownersNames;
     }
 }

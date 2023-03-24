@@ -3,5 +3,5 @@
   "breed": "Cornish Rex",
   "color": "Grey",
   "age": 4,
-  "ownersName": "Natasha and Alexey"
+  "ownersNames": ["Natasha", "Alexey"]
 }
