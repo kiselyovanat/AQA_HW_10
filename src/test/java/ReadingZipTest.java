@@ -14,7 +14,7 @@ public class ReadingZipTest {
     private ClassLoader cl = ReadingZipTest.class.getClassLoader();
 
     @Test
-    void readFilesFromZip() throws Exception {
+    void parsePdfFromZip() throws Exception {
         try (InputStream zipFile = cl.getResourceAsStream("TestData.zip");
              ZipInputStream filesFromZip = new ZipInputStream(zipFile)) {
             ZipEntry entry;
@@ -22,11 +22,33 @@ public class ReadingZipTest {
                 if (entry.getName().contains(".pdf")) {
                     PDF pdf = new PDF(filesFromZip);
                     Assertions.assertTrue(pdf.text.startsWith("Test data for homework for lesson 8"));
-                } else if (entry.getName().contains(".xlsx")) {
+                }
+            }
+        }
+    }
+
+    @Test
+    void parseXlsxFromZip() throws Exception {
+        try (InputStream zipFile = cl.getResourceAsStream("TestData.zip");
+             ZipInputStream filesFromZip = new ZipInputStream(zipFile)) {
+            ZipEntry entry;
+            while ((entry = filesFromZip.getNextEntry()) != null) {
+                if (entry.getName().contains(".xlsx")) {
                     XLS xls = new XLS(filesFromZip);
                     Assertions.assertEquals(xls.excel.getSheetAt(0).getRow(3).getCell(2)
                             .getStringCellValue(), "training");
-                } else if (entry.getName().contains(".csv")) {
+                }
+            }
+        }
+    }
+
+    @Test
+    void parseCSVFromZip() throws Exception {
+        try (InputStream zipFile = cl.getResourceAsStream("TestData.zip");
+             ZipInputStream filesFromZip = new ZipInputStream(zipFile)) {
+            ZipEntry entry;
+            while ((entry = filesFromZip.getNextEntry()) != null) {
+                if (entry.getName().contains(".csv")) {
                     CSVReader csvReader = new CSVReader(new InputStreamReader(filesFromZip));
                     List<String[]> csvContent = csvReader.readAll();
                     Assertions.assertArrayEquals(new String[]{"9", "test"}, csvContent.get(9));
