@@ -24,14 +24,14 @@ public class ReadingZipTest {
                     Assertions.assertTrue(pdf.text.startsWith("Test data for homework for lesson 8"));
                 }
 
-                if (entry.getName().contains(".xlsx")) {
+                else if (entry.getName().contains(".xlsx")) {
                     XLS xls = new XLS(filesFromZip);
                     Assertions.assertEquals(xls.excel.getSheetAt(0).getRow(3).getCell(2)
                             .getStringCellValue(), "training");
 
                 }
 
-                if (entry.getName().contains(".csv")) {
+                else if (entry.getName().contains(".csv")) {
                     CSVReader csvReader = new CSVReader(new InputStreamReader(filesFromZip));
                     List<String[]> csvContent = csvReader.readAll();
                     Assertions.assertArrayEquals(new String[]{"9", "test"}, csvContent.get(9));
