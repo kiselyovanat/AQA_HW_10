@@ -1,3 +1,4 @@
+import KittyJson.Kitty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -5,8 +6,6 @@ import org.junit.jupiter.api.Test;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
-
-import KittyJson.*;
 
 public class ParsingKittyJsonTest {
     private ClassLoader cl = ParsingKittyJsonTest.class.getClassLoader();
